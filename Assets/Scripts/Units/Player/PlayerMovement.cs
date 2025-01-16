@@ -1,6 +1,5 @@
 ﻿using Assets.Scripts.Input;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 namespace Assets.Scripts.Units.Player
 {
