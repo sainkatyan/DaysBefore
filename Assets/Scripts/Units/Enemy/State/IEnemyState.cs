@@ -1,3 +1,6 @@
+using UnityEngine;
+using UnityEngine.AI;
+
 namespace Assets.Scripts.Units.Enemy.State
 {
     public interface IEnemyState
@@ -5,5 +8,6 @@ namespace Assets.Scripts.Units.Enemy.State
         void Enter();
         void Exit();
         void Update();
+        void SetWayPoints(Transform[] transforms, NavMeshAgent navMeshAgent);
     }
 }

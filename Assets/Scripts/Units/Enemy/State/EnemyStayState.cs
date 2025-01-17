@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 
 namespace Assets.Scripts.Units.Enemy.State
 {
@@ -12,6 +13,11 @@ namespace Assets.Scripts.Units.Enemy.State
         public void Exit()
         {
             Debug.Log("Exit Idle state");
+        }
+
+        public void SetWayPoints(Transform[] transforms, NavMeshAgent navMeshAgent)
+        {
+            throw new System.NotImplementedException();
         }
 
         void IEnemyState.Update()

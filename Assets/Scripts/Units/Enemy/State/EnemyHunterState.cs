@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.AI;
 
 namespace Assets.Scripts.Units.Enemy.State
 {
@@ -17,6 +18,11 @@ namespace Assets.Scripts.Units.Enemy.State
         void IEnemyState.Update()
         {
             Debug.Log("Update Hunter state");
+        }
+
+        public void SetWayPoints(Transform[] transforms, NavMeshAgent navMeshAgent)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
