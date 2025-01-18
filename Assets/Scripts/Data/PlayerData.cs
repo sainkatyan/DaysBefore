@@ -2,7 +2,7 @@
 
 namespace Assets.Scripts.Data
 {
-    [CreateAssetMenu(menuName = "Data/ Player DAta Config")]
+    [CreateAssetMenu(menuName = "Data/ Player Data Config")]
     public class PlayerData : ScriptableObject
     {
         public int MaxHealth = 100;

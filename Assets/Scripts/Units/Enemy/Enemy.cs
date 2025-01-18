@@ -7,6 +7,7 @@ namespace Assets.Scripts.Units.Enemy
     public class Enemy : MonoBehaviour
     {
         [SerializeField] private EnemyTypesData enemyData;
+        public EnemyTypes enemyType;
 
         private EnemyMovementController enemyMovementController;
         private float damageAmount;
@@ -19,9 +20,31 @@ namespace Assets.Scripts.Units.Enemy
 
         private void Start()
         {
+            SetEnemyType();
             SetEnemyData();
         }
 
+        private void SetEnemyType()
+        {
+            switch (enemyType)
+            {
+                case EnemyTypes.Patrol:
+                    enemyMovementController.SetBehaviorPatrol();
+                    break;
+
+                case EnemyTypes.Hunter:
+                    enemyMovementController.SetBehaviorHunter();
+                    break;
+
+                case EnemyTypes.Stay:
+                    enemyMovementController.SetBehaviorIdle();
+                    break;
+
+                default :
+                    enemyMovementController.SetBehaviorIdle();
+                    break;
+            }
+        }
         private void SetEnemyData()
         {
             damageAmount = enemyData.patrolEnemy.damage;

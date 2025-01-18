@@ -27,7 +27,6 @@ namespace Assets.Scripts.Units.Enemy
             SetMovemetSpeed();
 
             this.InitBehaviours();
-            SetBehaviorPatrol();
         }
 
         private void SetMovemetSpeed()
