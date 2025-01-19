@@ -3,26 +3,36 @@ using UnityEngine.AI;
 
 namespace Assets.Scripts.Units.Enemy.State
 {
-    public class EnemyHunterState : IEnemyState
+    public class EnemyHunterState : EnemyState
     {
-        public void Enter()
+        public EnemyHunterState(EnemyMovementController movementController, NavMeshAgent agent, Transform target)
+     : base(movementController, agent, target) { }
+        public override void Enter()
         {
             Debug.Log("enter Hunter state");
+            agent.isStopped = false;
         }
 
-        public void Exit()
+        public override void Exit()
         {
             Debug.Log("Exit Hunter state");
+            agent.isStopped = true;
         }
 
-        void IEnemyState.Update()
+        public override void Update()
         {
             Debug.Log("Update Hunter state");
+            agent.SetDestination(target.position);
         }
 
-        public void SetWayPoints(Transform[] transforms, NavMeshAgent navMeshAgent)
+        public void SetWayPoints(Transform[] transforms)
         {
             throw new System.NotImplementedException();
+        }
+
+        public void SetNavAgent(NavMeshAgent navMeshAgent)
+        {
+            agent = navMeshAgent;
         }
     }
 }

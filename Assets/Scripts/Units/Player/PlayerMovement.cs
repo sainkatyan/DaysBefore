@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Data;
+﻿using Assets.Scripts.Core;
+using Assets.Scripts.Data;
 using Assets.Scripts.Input;
 using UnityEngine;
 
@@ -14,12 +15,12 @@ namespace Assets.Scripts.Units.Player
 
         private float movementSpeed;
 
-        public void Init(InputController inputController, CameraMovement cameraMovement, PlayerData playerData)
+        public void Init(InputController inputController, CameraMovement cameraMovement)
         {
             rigidbody = GetComponent<Rigidbody>();
             this.inputController = inputController;
             this.cameraMovement = cameraMovement;
-            movementSpeed = playerData.movementSpeed;
+            movementSpeed = GameManager.Instance.playerData.movementSpeed;
         }
 
         private void FixedUpdate()

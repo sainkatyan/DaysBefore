@@ -1,67 +1,65 @@
-﻿using Assets.Scripts.Data;
-using Assets.Scripts.Units.Player;
+﻿using Assets.Scripts.Core;
+using Assets.Scripts.Data;
 using UnityEngine;
 
 namespace Assets.Scripts.Units.Enemy
 {
-    public class Enemy : MonoBehaviour
+    public abstract class Enemy : MonoBehaviour
     {
         [SerializeField] private EnemyTypesData enemyData;
         public EnemyTypes enemyType;
+        protected EnemyMovementController enemyMovementController;
+        public float DamageAmount { get; private set;}
 
-        private EnemyMovementController enemyMovementController;
-        private float damageAmount;
-
-        private void Awake()
+        protected virtual void Start()
         {
             enemyMovementController = GetComponent<EnemyMovementController>();
             enemyMovementController.Init(this, enemyData);
+
+            Initialize();
         }
 
-        private void Start()
+        public virtual void Initialize()
         {
-            SetEnemyType();
-            SetEnemyData();
+            PerformAction();
+            DamageAmount = SetTakingDamage();
         }
 
-        private void SetEnemyType()
+        public abstract void PerformAction();
+
+        private float SetTakingDamage()
         {
             switch (enemyType)
             {
-                case EnemyTypes.Patrol:
-                    enemyMovementController.SetBehaviorPatrol();
-                    break;
-
-                case EnemyTypes.Hunter:
-                    enemyMovementController.SetBehaviorHunter();
-                    break;
-
                 case EnemyTypes.Stay:
-                    enemyMovementController.SetBehaviorIdle();
-                    break;
-
-                default :
-                    enemyMovementController.SetBehaviorIdle();
-                    break;
+                    return GameManager.Instance.enemyData.stayEnemy.damage;
+                case EnemyTypes.Patrol:
+                    return GameManager.Instance.enemyData.patrolEnemy.damage;
+                case EnemyTypes.Hunter:
+                    return GameManager.Instance.enemyData.hunterEnemy.damage;
+                default:
+                    return GameManager.Instance.enemyData.stayEnemy.damage;
             }
         }
-        private void SetEnemyData()
+
+        public bool IsTargetInSight(Transform target)
         {
-            damageAmount = enemyData.patrolEnemy.damage;
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, Vector3.up, out hit))
+            {
+                if (hit.transform == target)
+                {
+                    Debug.Log($"IsTargetInSight true");
+                    return true;
+                }
+                Debug.Log($"IsTargetInSight false");
+            }
+            Debug.Log($"IsTargetInSight false");
+
+            return false;
         }
 
-        private void OnCollisionEnter(Collision collision)
-        {
-            ITakeDamage damageable = collision.gameObject.GetComponent<ITakeDamage>();
-            if (damageable == null) return;
-
-            damageable.TakeDamage(damageAmount);
-            Debug.Log($"{damageAmount} damage from enemy");
-
-            Die();
-        }
-
-        private void Die()
+        protected virtual void Die()
         {
             gameObject.SetActive(false);
         }

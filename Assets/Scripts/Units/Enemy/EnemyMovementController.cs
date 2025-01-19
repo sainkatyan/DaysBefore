@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Data;
+﻿using Assets.Scripts.Core;
+using Assets.Scripts.Data;
 using Assets.Scripts.Units.Enemy.State;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace Assets.Scripts.Units.Enemy
 
         private NavMeshAgent agent;
         private Transform[] patrolPoints;
+        private Transform target;
 
         private Dictionary<Type, IEnemyState> behaviorsMap;
         private IEnemyState enemyCurrentState;
@@ -22,8 +24,11 @@ namespace Assets.Scripts.Units.Enemy
 
         public void Init(Enemy enemy, EnemyTypesData enemyTypesData)
         {
+            patrolPoints = patrolAim.SetPatrolTargets();
             agent = GetComponent<NavMeshAgent>();
             enemyData = enemyTypesData;
+            target = GameManager.Instance.player.transform;
+
             SetMovemetSpeed();
 
             this.InitBehaviours();
@@ -43,11 +48,10 @@ namespace Assets.Scripts.Units.Enemy
         {
             behaviorsMap = new Dictionary<Type, IEnemyState>();
 
-            this.behaviorsMap[typeof(EnemyStayState)] = new EnemyStayState();
-            this.behaviorsMap[typeof(EnemyHunterState)] = new EnemyHunterState();
-            this.behaviorsMap[typeof(EnemyPatrolState)] = new EnemyPatrolState();
+            this.behaviorsMap[typeof(EnemyStayState)] = new EnemyStayState(this, agent, target);
+            this.behaviorsMap[typeof(EnemyHunterState)] = new EnemyHunterState(this, agent, target);
+            this.behaviorsMap[typeof(EnemyPatrolState)] = new EnemyPatrolState(this, agent, target, patrolPoints);
         }
-
 
         public void Update()
         {
@@ -77,7 +81,7 @@ namespace Assets.Scripts.Units.Enemy
             this.SetBehavior(behavior);
         }
 
-        public void SetBehaviorHunter()
+        public void SetBehaviorHunter(GameObject gameObject)
         {
             var behavior = this.GetBehavior<EnemyHunterState>();
             this.SetBehavior(behavior);
@@ -86,9 +90,6 @@ namespace Assets.Scripts.Units.Enemy
         public void SetBehaviorPatrol()
         {
             var behavior = this.GetBehavior<EnemyPatrolState>();
-            patrolPoints = patrolAim.SetPatrolTargets();
-            behavior.SetWayPoints(patrolPoints, agent);
-
             this.SetBehavior(behavior);
         }
     }

@@ -1,4 +1,4 @@
-﻿using Assets.Scripts.Data;
+﻿using Assets.Scripts.Core;
 using Assets.Scripts.Input;
 using UnityEngine;
 
@@ -6,8 +6,6 @@ namespace Assets.Scripts.Units.Player
 {
     public class Player : MonoBehaviour, ITakeDamage
     {
-        [SerializeField] private PlayerData playerData;
-
         internal InputController inputController;
         public PlayerMovement playerMovement;
         public CameraMovement cameraMovement;
@@ -18,15 +16,14 @@ namespace Assets.Scripts.Units.Player
         {
             inputController = GetComponent<InputController>();
             inputController.InitializeController(this);
-
-            playerMovement.Init(inputController, cameraMovement, playerData);
-            cameraMovement.Init(inputController, playerMovement);
         }
 
         private void Start()
         {
-            health = new Health(playerData.MaxHealth);
-            Debug.Log($"Player set health : {playerData.MaxHealth}");
+            playerMovement.Init(inputController, cameraMovement);
+            cameraMovement.Init(inputController, playerMovement);
+
+            health = new Health(GameManager.Instance.playerData.MaxHealth);
             SubscribeEvent();
         }
 

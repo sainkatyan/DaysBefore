@@ -3,15 +3,15 @@ using UnityEngine.AI;
 
 namespace Assets.Scripts.Units.Enemy.State
 {
-    public class EnemyPatrolState : IEnemyState
+    public class EnemyPatrolState : EnemyState
     {
         private const float remainingDistance = 0.5f;
-
-        private NavMeshAgent agent;
-        private Transform[] points;
         private int destPoint = 0;
 
-        public void Enter()
+        public EnemyPatrolState(EnemyMovementController movementController, NavMeshAgent agent, Transform target, Transform[] wayPoints)
+        : base(movementController, agent, target, wayPoints) { }
+
+        public override void Enter()
         {
             Debug.Log("enter Patrol state");
 
@@ -24,13 +24,13 @@ namespace Assets.Scripts.Units.Enemy.State
             GotoNextPoint();
         }
 
-        public void Exit()
+        public override void Exit()
         {
             Debug.Log("Exit Patrol state");
         }
 
 
-        public void Update()
+        public override void Update()
         {
             Debug.Log("Update Patrol state");
 
@@ -43,21 +43,15 @@ namespace Assets.Scripts.Units.Enemy.State
         void GotoNextPoint()
         {
             // Returns if no points have been set up
-            if (points.Length == 0)
+            if (wayPoints.Length == 0)
                 return;
 
             // Set the agent to go to the currently selected destination.
-            agent.destination = points[destPoint].position;
+            agent.destination = wayPoints[destPoint].position;
 
             // Choose the next point in the array as the destination,
             // cycling to the start if necessary.
-            destPoint = (destPoint + 1) % points.Length;
-        }
-
-        public void SetWayPoints(Transform[] transforms, NavMeshAgent navMeshAgent)
-        {
-            agent = navMeshAgent;
-            points = transforms;
+            destPoint = (destPoint + 1) % wayPoints.Length;
         }
     }
 }
