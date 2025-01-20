@@ -1,12 +1,10 @@
 ﻿using Assets.Scripts.Core;
-using Assets.Scripts.Data;
 using UnityEngine;
 
 namespace Assets.Scripts.Units.Enemy
 {
-    public abstract class Enemy : MonoBehaviour
+    public abstract class Enemy : UnitBase
     {
-        [SerializeField] private EnemyTypesData enemyData;
         public EnemyTypes enemyType;
         protected EnemyMovementController enemyMovementController;
         public float DamageAmount { get; private set;}
@@ -14,7 +12,7 @@ namespace Assets.Scripts.Units.Enemy
         protected virtual void Start()
         {
             enemyMovementController = GetComponent<EnemyMovementController>();
-            enemyMovementController.Init(this, enemyData);
+            enemyMovementController.Init(this);
 
             Initialize();
         }
@@ -57,11 +55,6 @@ namespace Assets.Scripts.Units.Enemy
             Debug.Log($"IsTargetInSight false");
 
             return false;
-        }
-
-        protected virtual void Die()
-        {
-            gameObject.SetActive(false);
         }
     }
 }

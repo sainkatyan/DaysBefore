@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Units.Player
 {
-    public class Player : MonoBehaviour, ITakeDamage
+    public class Player : UnitBase, ITakeDamage
     {
         internal InputController inputController;
         public PlayerMovement playerMovement;
@@ -41,12 +41,6 @@ namespace Assets.Scripts.Units.Player
         private void OnHealthChanged(float currentHealth)
         {
             Debug.Log($"Player health changed: {currentHealth}");
-        }
-
-        private void Die()
-        {
-            Debug.Log("Player has died.");
-            gameObject.SetActive(false);
         }
 
         private void OnDestroy()

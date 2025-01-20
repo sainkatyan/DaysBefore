@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Data;
+using Assets.Scripts.Weapon;
 using UnityEngine;
 
 namespace Assets.Scripts.Core
@@ -9,7 +10,12 @@ namespace Assets.Scripts.Core
 
         public EnemyTypesData enemyData;
         public PlayerData playerData;
+        public WeaponData weaponData;
+
         public Transform player;
+
+        public Bullet bulletPrefub;
+        public BaseWeapon weapon;
 
         private void Awake()
         {

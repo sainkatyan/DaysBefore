@@ -1,5 +1,4 @@
 ﻿using Assets.Scripts.Core;
-using Assets.Scripts.Data;
 using Assets.Scripts.Units.Enemy.State;
 using System;
 using System.Collections.Generic;
@@ -11,9 +10,6 @@ namespace Assets.Scripts.Units.Enemy
     public class EnemyMovementController : MonoBehaviour
     {
         [SerializeField] private PatrolEnemyAim patrolAim;
-
-        private EnemyTypesData enemyData;
-
         private NavMeshAgent agent;
         private Transform[] patrolPoints;
         private Transform target;
@@ -22,12 +18,14 @@ namespace Assets.Scripts.Units.Enemy
         private IEnemyState enemyCurrentState;
 
 
-        public void Init(Enemy enemy, EnemyTypesData enemyTypesData)
+        public void Init(Enemy enemy)
         {
-            patrolPoints = patrolAim.SetPatrolTargets();
             agent = GetComponent<NavMeshAgent>();
-            enemyData = enemyTypesData;
             target = GameManager.Instance.player.transform;
+            if (patrolAim != null)
+            {
+                patrolPoints = patrolAim.SetPatrolTargets();
+            }
 
             SetMovemetSpeed();
 
@@ -41,7 +39,7 @@ namespace Assets.Scripts.Units.Enemy
                 agent = GetComponent<NavMeshAgent>();
             }
 
-            agent.speed = enemyData.patrolEnemy.speed;
+            agent.speed = GameManager.Instance.enemyData.patrolEnemy.speed;
         }
 
         private void InitBehaviours()
