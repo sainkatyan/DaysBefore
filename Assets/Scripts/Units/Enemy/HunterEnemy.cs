@@ -1,6 +1,5 @@
 ﻿using Assets.Scripts.Units.Player;
 using UnityEngine;
-using static UnityEngine.GraphicsBuffer;
 
 namespace Assets.Scripts.Units.Enemy
 {

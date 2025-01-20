@@ -31,7 +31,7 @@ namespace Assets.Scripts.Weapon
 
         private void Update()
         {
-            if (_isShooting == false) return;
+            if (isShooting == false) return;
             Shoot();
         }
 
@@ -73,12 +73,12 @@ namespace Assets.Scripts.Weapon
 
         public override void StartShoot()
         {
-            _isShooting = true;
+            isShooting = true;
         }
 
         public override void StopShoot()
         {
-            _isShooting = false;
+            isShooting = false;
         }
     }
 }

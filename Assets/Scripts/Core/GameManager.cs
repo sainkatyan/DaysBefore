@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Data;
+using Assets.Scripts.Units.Player;
 using Assets.Scripts.Weapon;
 using UnityEngine;
 
@@ -12,7 +13,7 @@ namespace Assets.Scripts.Core
         public PlayerData playerData;
         public WeaponData weaponData;
 
-        public Transform player;
+        public Player player;
 
         public Bullet bulletPrefub;
         public BaseWeapon weapon;

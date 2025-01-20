@@ -10,16 +10,20 @@ namespace Assets.Scripts.Units.Enemy
     public class EnemyMovementController : MonoBehaviour
     {
         [SerializeField] private PatrolEnemyAim patrolAim;
+        private Enemy enemy;
         private NavMeshAgent agent;
         private Transform[] patrolPoints;
         private Transform target;
-
+    
         private Dictionary<Type, IEnemyState> behaviorsMap;
         private IEnemyState enemyCurrentState;
+        private float distanceToTarget;
+        private float chaseRange;
 
 
         public void Init(Enemy enemy)
         {
+            this.enemy = enemy;
             agent = GetComponent<NavMeshAgent>();
             target = GameManager.Instance.player.transform;
             if (patrolAim != null)
@@ -39,16 +43,18 @@ namespace Assets.Scripts.Units.Enemy
                 agent = GetComponent<NavMeshAgent>();
             }
 
-            agent.speed = GameManager.Instance.enemyData.patrolEnemy.speed;
+            agent.speed = GameManager.Instance.enemyData.patrolEnemy.speed; //have to change
+            chaseRange = GameManager.Instance.enemyData.patrolEnemy.chaseRange;
         }
 
         private void InitBehaviours()
         {
             behaviorsMap = new Dictionary<Type, IEnemyState>();
 
-            this.behaviorsMap[typeof(EnemyStayState)] = new EnemyStayState(this, agent, target);
-            this.behaviorsMap[typeof(EnemyHunterState)] = new EnemyHunterState(this, agent, target);
-            this.behaviorsMap[typeof(EnemyPatrolState)] = new EnemyPatrolState(this, agent, target, patrolPoints);
+            this.behaviorsMap[typeof(EnemyStayState)] = new EnemyStayState(agent);
+            this.behaviorsMap[typeof(EnemyHunterState)] = new EnemyHunterState(agent, target);
+            this.behaviorsMap[typeof(EnemyPatrolState)] = new EnemyPatrolState(agent, target, patrolPoints);
+            this.behaviorsMap[typeof(EnemyActiveAimState)] = new EnemyActiveAimState(agent, target);
         }
 
         public void Update()
@@ -89,6 +95,17 @@ namespace Assets.Scripts.Units.Enemy
         {
             var behavior = this.GetBehavior<EnemyPatrolState>();
             this.SetBehavior(behavior);
+        }
+
+        public void SetBehaviorActiveAim()
+        {
+            var behavior = this.GetBehavior<EnemyActiveAimState>();
+            this.SetBehavior(behavior);
+        }
+
+        public bool IsNewState(IEnemyState newbehavior)
+        {
+            return (this.enemyCurrentState != null && this.enemyCurrentState != newbehavior);
         }
     }
 }

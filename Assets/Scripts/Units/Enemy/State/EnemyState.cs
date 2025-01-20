@@ -5,24 +5,36 @@ namespace Assets.Scripts.Units.Enemy.State
 {
     public abstract class EnemyState : IEnemyState
     {
-        protected EnemyMovementController movementController;
+        protected Enemy enemy;
         protected NavMeshAgent agent;
         protected Transform target;
         protected Transform[] wayPoints;
+        protected float chaseRange;
 
-        public EnemyState(EnemyMovementController movementController, NavMeshAgent agent, Transform target, Transform[] wayPoints = null)
+        public EnemyState( NavMeshAgent agent)
         {
-            this.movementController = movementController;
+            this.agent = agent;
+        }
+
+        public EnemyState(NavMeshAgent agent, Transform target = null)
+        {
+            this.agent = agent;
+            this.target = target;
+        }
+
+        public EnemyState( NavMeshAgent agent, Transform target, Transform[] wayPoints = null)
+        {
             this.agent = agent;
             this.target = target;
             this.wayPoints = wayPoints;
         }
 
-        public EnemyState(EnemyMovementController movementController, NavMeshAgent agent, Transform target = null)
+        public EnemyState(Enemy enemy, NavMeshAgent agent, Transform target, float chaseRange)
         {
-            this.movementController = movementController;
+            this.enemy = enemy;
             this.agent = agent;
             this.target = target;
+            this.chaseRange = chaseRange;
         }
 
         public abstract void Enter();

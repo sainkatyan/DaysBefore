@@ -1,3 +1,4 @@
+using Assets.Scripts.Core;
 using Assets.Scripts.Units;
 using UnityEngine;
 
@@ -26,7 +27,7 @@ namespace Assets.Scripts.Weapon
                 Destroy(weapon.gameObject);
             }
 
-            weapon = Instantiate(weapon, weaponPivot.position, weaponPivot.rotation);
+            weapon = Instantiate(GameManager.Instance.weapon, weaponPivot.position, weaponPivot.rotation);
             weapon.transform.SetParent(weaponPivot);
             weapon.SetInfoBaseUnit(parentUnit);
         }

@@ -8,5 +8,6 @@ namespace Assets.Scripts.Data
         public bool isShooting = false;
         public float speed;
         public float damage;
+        public float chaseRange = 10f;
     }
 }

@@ -11,7 +11,7 @@ namespace Assets.Scripts.Weapon
         protected float timeFireRate;
         protected float damage;
 
-        protected bool _isShooting = false;
+        protected bool isShooting = false;
         protected virtual void SetSettings(WeaponData weaponSetting)
         {
             timeFireRate = weaponSetting.TimeFireRate;

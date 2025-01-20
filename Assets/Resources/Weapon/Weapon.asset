@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 0}
   m_Name: Weapon
   m_EditorClassIdentifier: Assembly-CSharp:Assets.Scripts.Data:WeaponData
-  timeFireRate: 5
-  attackDamage: 5
+  timeFireRate: 1
+  attackDamage: 1

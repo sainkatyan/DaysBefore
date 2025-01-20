@@ -5,8 +5,8 @@ namespace Assets.Scripts.Units.Enemy.State
 {
     public class EnemyHunterState : EnemyState
     {
-        public EnemyHunterState(EnemyMovementController movementController, NavMeshAgent agent, Transform target)
-     : base(movementController, agent, target) { }
+        public EnemyHunterState(NavMeshAgent agent, Transform target)
+     : base(agent, target) { }
         public override void Enter()
         {
             Debug.Log("enter Hunter state");
@@ -23,16 +23,6 @@ namespace Assets.Scripts.Units.Enemy.State
         {
             Debug.Log("Update Hunter state");
             agent.SetDestination(target.position);
-        }
-
-        public void SetWayPoints(Transform[] transforms)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public void SetNavAgent(NavMeshAgent navMeshAgent)
-        {
-            agent = navMeshAgent;
         }
     }
 }

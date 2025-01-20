@@ -1,19 +1,19 @@
-﻿using UnityEngine;
-using UnityEngine.AI;
+﻿using UnityEngine.AI;
 
 namespace Assets.Scripts.Units.Enemy.State
 {
     public class EnemyStayState : EnemyState
     {
-        public EnemyStayState(EnemyMovementController movementController, NavMeshAgent agent, Transform target)
-            : base(movementController, agent, target) { }
-
+        public EnemyStayState(NavMeshAgent agent)
+            : base(agent) { }
         public override void Enter()
         {
+            agent.isStopped = false;
         }
 
         public override void Exit()
         {
+
         }
 
         public override void Update()

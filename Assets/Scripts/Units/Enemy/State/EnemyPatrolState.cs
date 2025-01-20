@@ -8,8 +8,8 @@ namespace Assets.Scripts.Units.Enemy.State
         private const float remainingDistance = 0.5f;
         private int destPoint = 0;
 
-        public EnemyPatrolState(EnemyMovementController movementController, NavMeshAgent agent, Transform target, Transform[] wayPoints)
-        : base(movementController, agent, target, wayPoints) { }
+        public EnemyPatrolState(NavMeshAgent agent, Transform target, Transform[] wayPoints)
+        : base(agent, target, wayPoints) { }
 
         public override void Enter()
         {
