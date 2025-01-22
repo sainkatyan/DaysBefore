@@ -7,7 +7,7 @@ namespace Units.Enemy
     public class ShooterEnemy : Enemy
     {
         public Transform weaponPivot;
-        public WeaponController weaponController;
+        private WeaponController weaponController;
         private Transform target;
         private float chaseRange;
         private float distanceToTarget;
@@ -24,7 +24,7 @@ namespace Units.Enemy
         }
         public void Update()
         {
-            if (target == null) return; //check player's dead for deACTIVATE
+            if (!target) return; //check player's dead for deACTIVATE
 
             if (IsPlayerInViewZoneAndIldleState())
             {

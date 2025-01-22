@@ -1,4 +1,5 @@
-﻿using Input;
+﻿using Core;
+using Input;
 using UnityEngine;
 
 namespace Units.Player
@@ -9,12 +10,13 @@ namespace Units.Player
         public PlayerMovement playerMovement;
         public CameraMovement cameraMovement;
 
-        private Health health;
+        public Health health;
 
         private void Awake()
         {
             inputController = GetComponent<InputController>();
             inputController.InitializeController(this);
+            health = new Health(GameManager.Instance.playerData.maxHealth);
         }
 
         private void Start()
@@ -22,7 +24,7 @@ namespace Units.Player
             playerMovement.Init(inputController, cameraMovement);
             cameraMovement.Init(inputController, playerMovement);
 
-            health = gameObject.AddComponent<Health>();
+            
             SubscribeEvent();
         }
 

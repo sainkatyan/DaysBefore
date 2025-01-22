@@ -11,7 +11,6 @@ namespace Weapon
         public Transform firePivot;
 
         public LayerMask ignoreLayer;
-        private int currentBulletsInMagazine;
 
         private void Start()
         {
@@ -21,12 +20,6 @@ namespace Weapon
         protected override void SetSettings(WeaponData weaponSettings)
         {
             base.SetSettings(weaponSettings);
-        }
-
-        private void OnGUI()
-        {
-            GUI.color = Color.black;
-            GUI.Label(new Rect(10, 10, 1000, 20), "currentCountOfShoot: " + currentBulletsInMagazine);
         }
 
         private void Update()
