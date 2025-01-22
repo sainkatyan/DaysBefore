@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.Units.Enemy
+﻿namespace Units.Enemy
 {
     public enum EnemyTypes
     {

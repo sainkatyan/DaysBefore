@@ -1,8 +1,8 @@
-using Assets.Scripts.Data;
-using Assets.Scripts.Units;
+using Data;
+using Units;
 using UnityEngine;
 
-namespace Assets.Scripts.Weapon
+namespace Weapon
 {
     public abstract class BaseWeapon : MonoBehaviour
     {

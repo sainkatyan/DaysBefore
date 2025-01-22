@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
-namespace Assets.Scripts.Data
+namespace Data
 {
     [CreateAssetMenu(menuName = "Data/ Player Data Config")]
     public class PlayerData : ScriptableObject
     {
-        public int MaxHealth = 100;
+        public int maxHealth = 100;
         public float movementSpeed;
     }
 }

@@ -1,40 +1,40 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-namespace Assets.Scripts.Units.Enemy.State
+namespace Units.Enemy.State
 {
     public abstract class EnemyState : IEnemyState
     {
-        protected Enemy enemy;
-        protected NavMeshAgent agent;
-        protected Transform target;
-        protected Transform[] wayPoints;
-        protected float chaseRange;
+        protected Enemy Enemy;
+        protected readonly NavMeshAgent Agent;
+        protected readonly Transform Target;
+        protected readonly Transform[] WayPoints;
+        protected float ChaseRange;
 
-        public EnemyState( NavMeshAgent agent)
+        protected EnemyState( NavMeshAgent agent)
         {
-            this.agent = agent;
+            Agent = agent;
         }
 
-        public EnemyState(NavMeshAgent agent, Transform target = null)
+        protected EnemyState(NavMeshAgent agent, Transform target = null)
         {
-            this.agent = agent;
-            this.target = target;
+            Agent = agent;
+            Target = target;
         }
 
-        public EnemyState( NavMeshAgent agent, Transform target, Transform[] wayPoints = null)
+        protected EnemyState( NavMeshAgent agent, Transform target, Transform[] wayPoints = null)
         {
-            this.agent = agent;
-            this.target = target;
-            this.wayPoints = wayPoints;
+            Agent = agent;
+            Target = target;
+            WayPoints = wayPoints;
         }
 
-        public EnemyState(Enemy enemy, NavMeshAgent agent, Transform target, float chaseRange)
+        protected EnemyState(Enemy enemy, NavMeshAgent agent, Transform target, float chaseRange)
         {
-            this.enemy = enemy;
-            this.agent = agent;
-            this.target = target;
-            this.chaseRange = chaseRange;
+            Enemy = enemy;
+            Agent = agent;
+            Target = target;
+            ChaseRange = chaseRange;
         }
 
         public abstract void Enter();

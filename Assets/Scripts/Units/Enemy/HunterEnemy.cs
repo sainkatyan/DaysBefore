@@ -1,14 +1,15 @@
-﻿using Assets.Scripts.Units.Player;
+﻿using Units.Player;
 using UnityEngine;
 
-namespace Assets.Scripts.Units.Enemy
+namespace Units.Enemy
 {
     public class HunterEnemy : Enemy
     {
         [SerializeField] private EnemyHunterViewZone viewZone;
+
         public override void PerformAction()
         {
-            enemyMovementController.SetBehaviorIdle();
+            EnemyMovementController.SetBehaviorIdle();
             viewZone.Initialize(this);
         }
 
@@ -30,12 +31,12 @@ namespace Assets.Scripts.Units.Enemy
         {
             if (isHuntingMode)
             {
-                enemyMovementController.SetBehaviorHunter(huntTarget);
+                EnemyMovementController.SetBehaviorHunter(huntTarget);
             }
             else
             {
-                enemyMovementController.SetBehaviorIdle();
-    }
+                EnemyMovementController.SetBehaviorIdle();
+            }
         }
     }
 }

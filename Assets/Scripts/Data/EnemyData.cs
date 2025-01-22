@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Assets.Scripts.Data
+namespace Data
 {
     [CreateAssetMenu(menuName = "Data/Enemy Data Config")]
     public class EnemyData : ScriptableObject

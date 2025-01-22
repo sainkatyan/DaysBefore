@@ -1,6 +1,6 @@
 ﻿using UnityEngine.AI;
 
-namespace Assets.Scripts.Units.Enemy.State
+namespace Units.Enemy.State
 {
     public class EnemyStayState : EnemyState
     {
@@ -8,7 +8,7 @@ namespace Assets.Scripts.Units.Enemy.State
             : base(agent) { }
         public override void Enter()
         {
-            agent.isStopped = false;
+            Agent.isStopped = false;
         }
 
         public override void Exit()

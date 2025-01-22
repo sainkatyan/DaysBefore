@@ -1,14 +1,14 @@
-using Assets.Scripts.Core;
-using Assets.Scripts.Units;
+using Core;
+using Units;
 using UnityEngine;
 
-namespace Assets.Scripts.Weapon
+namespace Weapon
 {
     public class WeaponController : MonoBehaviour
     {
         [SerializeField] private Transform weaponPivot;
         private UnitBase parentUnit;
-        public BaseWeapon weapon { get; private set; }
+        private BaseWeapon Weapon { get; set; }
 
         private void Start()
         {
@@ -22,23 +22,23 @@ namespace Assets.Scripts.Weapon
 
         private void EquipWeapon()
         {
-            if (weapon != null)
+            if (Weapon != null)
             {
-                Destroy(weapon.gameObject);
+                Destroy(Weapon.gameObject);
             }
 
-            weapon = Instantiate(GameManager.Instance.weapon, weaponPivot.position, weaponPivot.rotation);
-            weapon.transform.SetParent(weaponPivot);
-            weapon.SetInfoBaseUnit(parentUnit);
+            Weapon = Instantiate(GameManager.Instance.weapon, weaponPivot.position, weaponPivot.rotation);
+            Weapon.transform.SetParent(weaponPivot);
+            Weapon.SetInfoBaseUnit(parentUnit);
         }
 
         public void StartShoot()
         {
-            weapon.StartShoot();
+            Weapon.StartShoot();
         }
         public void StopShoot()
         {
-            weapon.StopShoot();
+            Weapon.StopShoot();
         }
     }
 }

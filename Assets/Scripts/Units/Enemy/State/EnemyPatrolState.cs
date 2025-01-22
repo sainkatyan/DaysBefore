@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-namespace Assets.Scripts.Units.Enemy.State
+namespace Units.Enemy.State
 {
     public class EnemyPatrolState : EnemyState
     {
-        private const float remainingDistance = 0.5f;
+        private const float RemainingDistance = 0.5f;
         private int destPoint = 0;
 
         public EnemyPatrolState(NavMeshAgent agent, Transform target, Transform[] wayPoints)
@@ -19,7 +19,7 @@ namespace Assets.Scripts.Units.Enemy.State
             // Disabling auto-braking allows for continuous movement
             // between points (ie, the agent doesn't slow down as it
             // approaches a destination point).
-            agent.autoBraking = false;
+            Agent.autoBraking = false;
 
             GotoNextPoint();
         }
@@ -36,22 +36,22 @@ namespace Assets.Scripts.Units.Enemy.State
 
             // Choose the next destination point when the agent gets
             // close to the current one.
-            if (agent.remainingDistance < remainingDistance)
+            if (Agent.remainingDistance < RemainingDistance)
                 GotoNextPoint();
         }
 
         void GotoNextPoint()
         {
             // Returns if no points have been set up
-            if (wayPoints.Length == 0)
+            if (WayPoints.Length == 0)
                 return;
 
             // Set the agent to go to the currently selected destination.
-            agent.destination = wayPoints[destPoint].position;
+            Agent.destination = WayPoints[destPoint].position;
 
             // Choose the next point in the array as the destination,
             // cycling to the start if necessary.
-            destPoint = (destPoint + 1) % wayPoints.Length;
+            destPoint = (destPoint + 1) % WayPoints.Length;
         }
     }
 }

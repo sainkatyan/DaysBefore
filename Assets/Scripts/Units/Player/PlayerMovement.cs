@@ -1,9 +1,8 @@
-﻿using Assets.Scripts.Core;
-using Assets.Scripts.Data;
-using Assets.Scripts.Input;
+﻿using Core;
+using Input;
 using UnityEngine;
 
-namespace Assets.Scripts.Units.Player
+namespace Units.Player
 {
     public class PlayerMovement : MonoBehaviour
     {

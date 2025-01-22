@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-namespace Assets.Scripts.Units.Enemy.State
+namespace Units.Enemy.State
 {
     public class EnemyActiveAimState : EnemyState
     {
@@ -20,9 +20,9 @@ namespace Assets.Scripts.Units.Enemy.State
 
         public override void Update()
         {
-            if (target == null) return;
+            if (Target == null) return;
 
-            agent.transform.LookAt(target.transform);
+            Agent.transform.LookAt(Target.transform);
         }
     }
 }

@@ -1,16 +1,16 @@
-﻿using Assets.Scripts.Core;
-using Assets.Scripts.Units.Enemy.State;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Core;
+using Units.Enemy.State;
 using UnityEngine;
 using UnityEngine.AI;
 
-namespace Assets.Scripts.Units.Enemy
+namespace Units.Enemy
 {
     public class EnemyMovementController : MonoBehaviour
     {
         [SerializeField] private PatrolEnemyAim patrolAim;
-        private Enemy enemy;
+        private global::Units.Enemy.Enemy enemy;
         private NavMeshAgent agent;
         private Transform[] patrolPoints;
         private Transform target;
@@ -21,7 +21,7 @@ namespace Assets.Scripts.Units.Enemy
         private float chaseRange;
 
 
-        public void Init(Enemy enemy)
+        public void Init(global::Units.Enemy.Enemy enemy)
         {
             this.enemy = enemy;
             agent = GetComponent<NavMeshAgent>();

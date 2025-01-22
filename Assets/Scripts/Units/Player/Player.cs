@@ -1,12 +1,11 @@
-﻿using Assets.Scripts.Core;
-using Assets.Scripts.Input;
+﻿using Input;
 using UnityEngine;
 
-namespace Assets.Scripts.Units.Player
+namespace Units.Player
 {
     public class Player : UnitBase, ITakeDamage
     {
-        internal InputController inputController;
+        private InputController inputController;
         public PlayerMovement playerMovement;
         public CameraMovement cameraMovement;
 
@@ -23,7 +22,7 @@ namespace Assets.Scripts.Units.Player
             playerMovement.Init(inputController, cameraMovement);
             cameraMovement.Init(inputController, playerMovement);
 
-            health = new Health(GameManager.Instance.playerData.MaxHealth);
+            health = gameObject.AddComponent<Health>();
             SubscribeEvent();
         }
 
@@ -32,7 +31,7 @@ namespace Assets.Scripts.Units.Player
             health.OnHealthChanged += OnHealthChanged;
             health.OnDeath += Die;
         }
-
+        // ReSharper disable Unity.PerformanceAnalysis
         public void TakeDamage(float damage)
         {
             health.TakeDamage(damage);

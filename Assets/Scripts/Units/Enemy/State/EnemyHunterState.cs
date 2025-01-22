@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.AI;
 
-namespace Assets.Scripts.Units.Enemy.State
+namespace Units.Enemy.State
 {
     public class EnemyHunterState : EnemyState
     {
@@ -10,19 +10,19 @@ namespace Assets.Scripts.Units.Enemy.State
         public override void Enter()
         {
             Debug.Log("enter Hunter state");
-            agent.isStopped = false;
+            Agent.isStopped = false;
         }
 
         public override void Exit()
         {
             Debug.Log("Exit Hunter state");
-            agent.isStopped = true;
+            Agent.isStopped = true;
         }
 
         public override void Update()
         {
             Debug.Log("Update Hunter state");
-            agent.SetDestination(target.position);
+            Agent.SetDestination(Target.position);
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts.Units.Enemy
+namespace Units.Enemy
 {
     public class PatrolEnemyAim : MonoBehaviour
     {

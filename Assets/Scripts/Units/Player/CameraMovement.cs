@@ -1,11 +1,11 @@
-﻿using Assets.Scripts.Input;
+﻿using Input;
 using UnityEngine;
 
-namespace Assets.Scripts.Units.Player
+namespace Units.Player
 {
     public class CameraMovement : MonoBehaviour
     {
-        [SerializeField] private float _lookSpeed = 1000f;
+        [SerializeField] private float lookSpeed = 1000f;
 
         private InputController inputController;
         private PlayerMovement playerMovement;
@@ -16,7 +16,7 @@ namespace Assets.Scripts.Units.Player
         }
         private void Update()
         {
-            var rotation = inputController.RotateInput() * _lookSpeed * Time.deltaTime;
+            var rotation = inputController.RotateInput() * (lookSpeed * Time.deltaTime);
             transform.localRotation *= Quaternion.Euler(rotation.y, 0f, 0f);
             transform.rotation *= Quaternion.Euler(0f, rotation.x, 0f);
 
@@ -27,7 +27,7 @@ namespace Assets.Scripts.Units.Player
             playerMovement.RotateMesh();
         }
 
-        private float AngelCorrection(float angle)
+        private static float AngelCorrection(float angle)
         {
             if (angle > 180f)
             {

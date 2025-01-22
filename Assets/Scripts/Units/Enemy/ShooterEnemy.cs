@@ -1,12 +1,12 @@
-﻿using Assets.Scripts.Core;
-using Assets.Scripts.Weapon;
+﻿using Core;
 using UnityEngine;
+using Weapon;
 
-namespace Assets.Scripts.Units.Enemy
+namespace Units.Enemy
 {
     public class ShooterEnemy : Enemy
     {
-        public Transform WeaponPivot;
+        public Transform weaponPivot;
         public WeaponController weaponController;
         private Transform target;
         private float chaseRange;
@@ -15,7 +15,7 @@ namespace Assets.Scripts.Units.Enemy
 
         public override void PerformAction()
         {
-            enemyMovementController.SetBehaviorIdle();
+            EnemyMovementController.SetBehaviorIdle();
 
             weaponController = GetComponent<WeaponController>();
             isShooting = false;
@@ -47,7 +47,7 @@ namespace Assets.Scripts.Units.Enemy
             isShooting = true;
             weaponController.StartShoot();
 
-            enemyMovementController.SetBehaviorActiveAim();
+            EnemyMovementController.SetBehaviorActiveAim();
         }
 
         private void DeActivateShootMode()
@@ -55,7 +55,7 @@ namespace Assets.Scripts.Units.Enemy
             isShooting = false;
             weaponController.StopShoot();
 
-            enemyMovementController.SetBehaviorIdle();
+            EnemyMovementController.SetBehaviorIdle();
         }
     }
 }

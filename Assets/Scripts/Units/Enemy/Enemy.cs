@@ -1,18 +1,18 @@
-﻿using Assets.Scripts.Core;
+﻿using Core;
 using UnityEngine;
 
-namespace Assets.Scripts.Units.Enemy
+namespace Units.Enemy
 {
     public abstract class Enemy : UnitBase
     {
         public EnemyTypes enemyType;
-        protected EnemyMovementController enemyMovementController;
+        protected EnemyMovementController EnemyMovementController;
         public float DamageAmount { get; private set;}
 
         protected virtual void Start()
         {
-            enemyMovementController = GetComponent<EnemyMovementController>();
-            enemyMovementController.Init(this);
+            EnemyMovementController = GetComponent<EnemyMovementController>();
+            EnemyMovementController.Init(this);
 
             Initialize();
         }

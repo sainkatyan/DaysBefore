@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Assets.Scripts.Data
+namespace Data
 {
     [CreateAssetMenu(menuName = "Data/Weapon Data Config")]
     public class WeaponData : ScriptableObject
@@ -8,19 +8,8 @@ namespace Assets.Scripts.Data
         [SerializeField] private float timeFireRate;
         [SerializeField] private float attackDamage;
 
-        public float TimeFireRate
-        {
-            get
-            {
-                return timeFireRate;
-            }
-        }
-        public float AttackDamage
-        {
-            get
-            {
-                return attackDamage;
-            }
-        }
+        public float TimeFireRate => timeFireRate;
+
+        public float AttackDamage => attackDamage;
     }
 }

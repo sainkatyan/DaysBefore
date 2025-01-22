@@ -1,13 +1,13 @@
-﻿using Assets.Scripts.Units.Player;
+﻿using Units.Player;
 using UnityEngine;
 
-namespace Assets.Scripts.Units.Enemy
+namespace Units.Enemy
 {
     public class PatrolEnemy : Enemy
     {
         public override void PerformAction()
         {
-            enemyMovementController.SetBehaviorPatrol();
+            EnemyMovementController.SetBehaviorPatrol();
         }
 
         private void OnCollisionEnter(Collision collision)

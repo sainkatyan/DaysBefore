@@ -1,13 +1,13 @@
-﻿using Assets.Scripts.Core;
-using Assets.Scripts.Data;
-using Assets.Scripts.Units.Player;
+﻿using Core;
+using Data;
+using Units.Player;
 using UnityEngine;
 
-namespace Assets.Scripts.Weapon
+namespace Weapon
 {
     public class Weapon : BaseWeapon
     {
-        private float distanceOfDamage = 40f;
+        private readonly float distanceOfDamage = 40f;
         public Transform firePivot;
 
         public LayerMask ignoreLayer;
@@ -35,7 +35,7 @@ namespace Assets.Scripts.Weapon
             Shoot();
         }
 
-        public void Shoot()
+        private void Shoot()
         {
             Ray ray = new Ray(firePivot.position, firePivot.forward);
             Shoot(ray);

@@ -1,10 +1,10 @@
 using UnityEngine;
 
-namespace Assets.Scripts.Input
+namespace Input
 {
     public class InputEvents : MonoBehaviour
     {
-        public static PlayerContol InputActions;
+        private static PlayerContol inputActions;
 
         private void Awake()
         {
@@ -13,27 +13,28 @@ namespace Assets.Scripts.Input
 
         private void InitializeControl()
         {
-            InputActions = new PlayerContol();
+            inputActions = new PlayerContol();
             EnablePlayerInput();
         }
-        public static void EnablePlayerInput()
+
+        private static void EnablePlayerInput()
         {
-            InputActions.Player.Enable();
+            inputActions.Player.Enable();
         }
 
         public static void DisablePlayerInput()
         {
-            InputActions.Player.Disable();
+            inputActions.Player.Disable();
         }
 
         public static Vector2 GetMoveInput()
         {
-            return InputActions.Player.Move.ReadValue<Vector2>();
+            return inputActions.Player.Move.ReadValue<Vector2>();
         }
 
         public static Vector2 GetRotateInput()
         {
-            return InputActions.Player.Rotate.ReadValue<Vector2>();
+            return inputActions.Player.Rotate.ReadValue<Vector2>();
         }
     }
 }

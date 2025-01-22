@@ -1,4 +1,4 @@
-﻿namespace Assets.Scripts.Units.Player
+﻿namespace Units.Player
 {
     public interface ITakeDamage 
     {

@@ -1,9 +1,9 @@
-﻿using Assets.Scripts.Data;
-using Assets.Scripts.Units.Player;
-using Assets.Scripts.Weapon;
+﻿using Data;
+using Units.Player;
 using UnityEngine;
+using Weapon;
 
-namespace Assets.Scripts.Core
+namespace Core
 {
     public class GameManager : MonoBehaviour
     {

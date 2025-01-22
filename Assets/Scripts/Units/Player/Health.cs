@@ -1,29 +1,32 @@
 using System;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+namespace Units.Player
 {
-    private float MaxHealth;
-    private float CurrentHealth;
-
-    public event Action OnDeath; 
-    public event Action<float> OnHealthChanged; 
-
-    public Health(float maxHealth)
+    public class Health : MonoBehaviour
     {
-        MaxHealth = maxHealth;
-        CurrentHealth = maxHealth;
-    }
+        private float maxHealth;
+        private float currentHealth;
 
-    public void TakeDamage(float damage)
-    {
-        CurrentHealth -= damage;
-        OnHealthChanged?.Invoke(CurrentHealth);
+        public event Action OnDeath; 
+        public event Action<float> OnHealthChanged; 
 
-        if (CurrentHealth <= 0)
+        public Health(float maxHealth)
         {
-            CurrentHealth = 0;
-            OnDeath?.Invoke();
+            this.maxHealth = maxHealth;
+            currentHealth = maxHealth;
+        }
+
+        public void TakeDamage(float damage)
+        {
+            currentHealth -= damage;
+            OnHealthChanged?.Invoke(currentHealth);
+
+            if (currentHealth <= 0)
+            {
+                currentHealth = 0;
+                OnDeath?.Invoke();
+            }
         }
     }
 }
