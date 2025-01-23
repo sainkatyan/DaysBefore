@@ -5,16 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="573922ae-35da-4478-be37-ddbb3bce4acc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/UI.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ReactionGames/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ReactionGames/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefubs/Units/Player.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefubs/Units/Player.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Enemy/StayEnemy.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Enemy/StayEnemy.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Player/PlayerData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Player/PlayerData.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Weapon/Weapon.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Weapon/Weapon.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefubs/Units/Enemies/HunterEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefubs/Units/Enemies/HunterEnemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefubs/Units/Enemies/PatrolEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefubs/Units/Enemies/PatrolEnemy.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefubs/Units/Enemies/ShootEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefubs/Units/Enemies/ShootEnemy.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameplayCore.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameplayCore.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Enemy/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Enemy/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Enemy/HunterEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Enemy/HunterEnemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Enemy/PatrolEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Enemy/PatrolEnemy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Enemy/ShooterEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Enemy/ShooterEnemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Player/CameraMovement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Player/CameraMovement.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Player/Player.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Weapon/Bullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Weapon/Bullet.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Weapon/Weapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Weapon/Weapon.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,18 +37,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.28f1\Editor\Unity.exe" />
@@ -102,7 +104,9 @@
       <updated>1737562115525</updated>
       <workItem from="1737562118788" duration="398000" />
       <workItem from="1737562530066" duration="77000" />
-      <workItem from="1737563020921" duration="5682000" />
+      <workItem from="1737563020921" duration="6287000" />
+      <workItem from="1737582282471" duration="4245000" />
+      <workItem from="1737645692847" duration="51000" />
     </task>
     <servers />
   </component>

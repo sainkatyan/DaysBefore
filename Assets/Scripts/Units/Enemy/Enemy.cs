@@ -7,7 +7,7 @@ namespace Units.Enemy
     {
         public EnemyTypes enemyType;
         protected EnemyMovementController EnemyMovementController;
-        public float DamageAmount { get; private set;}
+        protected float DamageAmount { get; private set; }
 
         protected virtual void Start()
         {
@@ -17,13 +17,13 @@ namespace Units.Enemy
             Initialize();
         }
 
-        public virtual void Initialize()
+        private void Initialize()
         {
             PerformAction();
             DamageAmount = SetTakingDamage();
         }
 
-        public abstract void PerformAction();
+        protected abstract void PerformAction();
 
         private float SetTakingDamage()
         {
@@ -40,20 +40,26 @@ namespace Units.Enemy
             }
         }
 
-        public bool IsTargetInSight(Transform target)
+        protected bool IsTargetInSight(Transform target, float chaseRange)
+        {
+            if (!IsTargetInZone(target, chaseRange)) return false;
+            return IsTargetInView(target, chaseRange);
+        }
+
+        private bool IsTargetInZone(Transform target, float chaseRange)
+        {
+            float distanceToTarget = Vector3.Distance(transform.position, target.position);
+            return (distanceToTarget < chaseRange);
+        }
+
+        private bool IsTargetInView(Transform target, float chaseRange)
         {
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, Vector3.up, out hit))
+            Vector3 directionToTarget = (target.position - transform.position).normalized;
+            if (Physics.Raycast(transform.position + Vector3.up, directionToTarget, out hit, chaseRange))
             {
-                if (hit.transform == target)
-                {
-                    Debug.Log($"IsTargetInSight true");
-                    return true;
-                }
-                Debug.Log($"IsTargetInSight false");
+                if (hit.transform == target) return true;
             }
-            Debug.Log($"IsTargetInSight false");
-
             return false;
         }
     }

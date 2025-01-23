@@ -7,7 +7,7 @@ namespace Units.Enemy
     {
         [SerializeField] private EnemyHunterViewZone viewZone;
 
-        public override void PerformAction()
+        protected override void PerformAction()
         {
             EnemyMovementController.SetBehaviorIdle();
             viewZone.Initialize(this);

@@ -5,7 +5,7 @@ namespace Units.Enemy
 {
     public class PatrolEnemy : Enemy
     {
-        public override void PerformAction()
+        protected override void PerformAction()
         {
             EnemyMovementController.SetBehaviorPatrol();
         }

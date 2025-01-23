@@ -4,7 +4,7 @@ namespace Weapon
 {
     public class Bullet : MonoBehaviour
     {
-        private float speed = 0.2f;
+        private float speed = 0.5f;
 
         private Vector3 startPos;
         private Vector3 endPos;

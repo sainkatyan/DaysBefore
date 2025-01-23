@@ -120,9 +120,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 380ae0733751d2c4eaab15f33ea16953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDead: 0
   enemyType: 0
-  WeaponPivot: {fileID: 4643425385040783645}
-  weaponController: {fileID: 0}
+  weaponPivot: {fileID: 6739948565438431489}
 --- !u!114 &5541003937419009171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,11 +136,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponPivot: {fileID: 6739948565438431489}
---- !u!4 &4643425385040783645 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7105754170322250692, guid: 27e5e18414594c24d923be427d949f33, type: 3}
-  m_PrefabInstance: {fileID: 2516517186142323417}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6739948565438431489 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9179862775163339736, guid: 27e5e18414594c24d923be427d949f33, type: 3}

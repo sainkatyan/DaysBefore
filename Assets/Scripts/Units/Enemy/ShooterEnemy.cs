@@ -6,14 +6,12 @@ namespace Units.Enemy
 {
     public class ShooterEnemy : Enemy
     {
-        public Transform weaponPivot;
         private WeaponController weaponController;
         private Transform target;
         private float chaseRange;
-        private float distanceToTarget;
-        private bool isShooting;
+        private bool isShooting = false;
 
-        public override void PerformAction()
+        protected override void PerformAction()
         {
             EnemyMovementController.SetBehaviorIdle();
 
@@ -21,12 +19,31 @@ namespace Units.Enemy
             isShooting = false;
             target = GameManager.Instance.player.transform;
             chaseRange = GameManager.Instance.enemyData.stayEnemy.chaseRange;
+            
+            Subscribe();
         }
+
+        private void Subscribe()
+        {
+            GameManager.Instance.player.health.OnDeath += ChangeStarteAfterPlayerDeath;
+        }
+        
+        private void UnSubscribe()
+        {
+            GameManager.Instance.player.health.OnDeath -= ChangeStarteAfterPlayerDeath;
+        }
+
+        private void ChangeStarteAfterPlayerDeath()
+        {
+            if (!isShooting) return;
+            DeActivateShootMode();
+        }
+
         public void Update()
         {
             if (!target) return; //check player's dead for deACTIVATE
 
-            if (IsPlayerInViewZoneAndIldleState())
+            if (IsTargetInSight(target, chaseRange) && !isShooting)
             {
                 ActivateShootMode();
             }
@@ -34,12 +51,6 @@ namespace Units.Enemy
             {
                 DeActivateShootMode();
             }
-        }
-
-        private bool IsPlayerInViewZoneAndIldleState()
-        {
-            distanceToTarget = Vector3.Distance(this.transform.position, target.position);
-            return distanceToTarget <= chaseRange && !isShooting;
         }
 
         private void ActivateShootMode()
@@ -56,6 +67,11 @@ namespace Units.Enemy
             weaponController.StopShoot();
 
             EnemyMovementController.SetBehaviorIdle();
+        }
+
+        private void OnDestroy()
+        {
+            UnSubscribe();
         }
     }
 }

@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HunterEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 747664474707130019, guid: 27e5e18414594c24d923be427d949f33, type: 3}
+      propertyPath: m_Mass
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 1519484977824658794, guid: 27e5e18414594c24d923be427d949f33, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -22,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7105754170322250692, guid: 27e5e18414594c24d923be427d949f33, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -13.84
+      value: 14.269644
       objectReference: {fileID: 0}
     - target: {fileID: 7105754170322250692, guid: 27e5e18414594c24d923be427d949f33, type: 3}
       propertyPath: m_LocalPosition.y
@@ -30,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7105754170322250692, guid: 27e5e18414594c24d923be427d949f33, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.75
+      value: -9.939671
       objectReference: {fileID: 0}
     - target: {fileID: 7105754170322250692, guid: 27e5e18414594c24d923be427d949f33, type: 3}
       propertyPath: m_LocalRotation.w
@@ -93,7 +97,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9926bdf2ce80967409a6f1fc0159bc73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyData: {fileID: 11400000, guid: 452b5a3a6a0f254499ba67e54d0b3d84, type: 2}
+  isDead: 0
   enemyType: 2
   viewZone: {fileID: 4687574665326351433}
 --- !u!4 &7039766017653336506 stripped

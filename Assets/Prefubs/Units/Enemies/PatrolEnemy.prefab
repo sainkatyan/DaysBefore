@@ -10,19 +10,23 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 184899690710244808, guid: 27e5e18414594c24d923be427d949f33, type: 3}
       propertyPath: m_Name
-      value: PatrolEnemy Variant
+      value: PatrolEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 747664474707130019, guid: 27e5e18414594c24d923be427d949f33, type: 3}
+      propertyPath: m_Mass
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7105754170322250692, guid: 27e5e18414594c24d923be427d949f33, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -4.2381344
       objectReference: {fileID: 0}
     - target: {fileID: 7105754170322250692, guid: 27e5e18414594c24d923be427d949f33, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.04
       objectReference: {fileID: 0}
     - target: {fileID: 7105754170322250692, guid: 27e5e18414594c24d923be427d949f33, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.75
+      value: -35.320385
       objectReference: {fileID: 0}
     - target: {fileID: 7105754170322250692, guid: 27e5e18414594c24d923be427d949f33, type: 3}
       propertyPath: m_LocalRotation.w
@@ -59,5 +63,27 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 184899690710244808, guid: 27e5e18414594c24d923be427d949f33, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8875289680617639449}
   m_SourcePrefab: {fileID: 100100000, guid: 27e5e18414594c24d923be427d949f33, type: 3}
+--- !u!1 &1547171754666496302 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 184899690710244808, guid: 27e5e18414594c24d923be427d949f33, type: 3}
+  m_PrefabInstance: {fileID: 1722712389674536166}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8875289680617639449
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1547171754666496302}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64eb5727c8c756e4bb8f5da2ca7d912a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isDead: 0
+  enemyType: 1

@@ -41,7 +41,7 @@ namespace Units.Player
 
         private void OnHealthChanged(float currentHealth)
         {
-            Debug.Log($"Player health changed: {currentHealth}");
+            //Debug.Log($"Player health changed: {currentHealth}");
         }
 
         private void OnDestroy()

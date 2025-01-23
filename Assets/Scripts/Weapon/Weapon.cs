@@ -7,14 +7,17 @@ namespace Weapon
 {
     public class Weapon : BaseWeapon
     {
-        private readonly float distanceOfDamage = 40f;
+        private readonly float distanceOfDamage = 100f;
         public Transform firePivot;
 
         public LayerMask ignoreLayer;
+        private float lifetTime = 1f;
+        private float weaponSpeed = 2f;
 
         private void Start()
         {
             SetSettings(GameManager.Instance.weaponData);
+            lifetTime = 0f;
         }
 
         protected override void SetSettings(WeaponData weaponSettings)
@@ -25,7 +28,12 @@ namespace Weapon
         private void Update()
         {
             if (isShooting == false) return;
-            Shoot();
+            lifetTime += Time.deltaTime / weaponSpeed;
+            if (lifetTime > 1f)
+            {
+                lifetTime = 0f;
+                Shoot();
+            }
         }
 
         private void Shoot()
