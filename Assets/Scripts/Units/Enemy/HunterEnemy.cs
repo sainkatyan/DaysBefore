@@ -7,24 +7,22 @@ namespace Units.Enemy
     public class HunterEnemy : Enemy
     {
         private Transform target;
-        private float chaseRange;
         private bool isHunting = false;
 
         protected override void PerformAction()
         {
             EnemyMovementController.SetBehaviorIdle();
             target = GameManager.Instance.player.transform;
-            chaseRange = GameManager.Instance.enemyData.hunterEnemy.chaseRange;
         }
         
         public void FixedUpdate()
         {
-            if (IsTargetInSight(target, chaseRange) && !isHunting)
+            if (IsTargetInSight(target, DetectionRange) && !isHunting)
             {
                 isHunting = true;
                 TurnOnHuntingMode();
             }
-            else if(!IsTargetInZone(target, chaseRange) && isHunting)
+            else if(!IsTargetInZone(target, DetectionRange) && isHunting)
             {
                 isHunting = false;
                 TurnOnHuntingMode(false);

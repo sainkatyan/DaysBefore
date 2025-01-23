@@ -1,4 +1,5 @@
 ﻿using Core;
+using Data;
 using UnityEngine;
 
 namespace Units.Enemy
@@ -6,13 +7,18 @@ namespace Units.Enemy
     public abstract class Enemy : UnitBase
     {
         public EnemyTypes enemyType;
+        private EnemyTypesData enemyTypesData;
         protected EnemyMovementController EnemyMovementController;
         protected float DamageAmount { get; private set; }
-
+        protected float DetectionRange { get; private set; }
+        private float movementSpeed;
+        
         protected virtual void Start()
         {
+            enemyTypesData = GameManager.Instance.enemyData; 
+            GetEnemyData();
             EnemyMovementController = GetComponent<EnemyMovementController>();
-            EnemyMovementController.Init(this);
+            EnemyMovementController.Init(movementSpeed);
 
             Initialize();
         }
@@ -20,23 +26,34 @@ namespace Units.Enemy
         private void Initialize()
         {
             PerformAction();
-            DamageAmount = SetTakingDamage();
         }
 
         protected abstract void PerformAction();
 
-        private float SetTakingDamage()
+        private void GetEnemyData()
         {
             switch (enemyType)
             {
                 case EnemyTypes.Stay:
-                    return GameManager.Instance.enemyData.stayEnemy.damage;
+                    DamageAmount = enemyTypesData.stayEnemy.damage;
+                    movementSpeed = enemyTypesData.stayEnemy.movementSpeed;
+                    DetectionRange = enemyTypesData.stayEnemy.detectionRange;
+                    return;
                 case EnemyTypes.Patrol:
-                    return GameManager.Instance.enemyData.patrolEnemy.damage;
+                    DamageAmount = enemyTypesData.patrolEnemy.damage;
+                    movementSpeed = enemyTypesData.patrolEnemy.movementSpeed;
+                    DetectionRange = enemyTypesData.patrolEnemy.detectionRange;
+                    return;
                 case EnemyTypes.Hunter:
-                    return GameManager.Instance.enemyData.hunterEnemy.damage;
+                    DamageAmount = enemyTypesData.hunterEnemy.damage;
+                    movementSpeed = enemyTypesData.hunterEnemy.movementSpeed;
+                    DetectionRange = enemyTypesData.hunterEnemy.detectionRange;
+                    return;
                 default:
-                    return GameManager.Instance.enemyData.stayEnemy.damage;
+                    DamageAmount = enemyTypesData.stayEnemy.damage;
+                    movementSpeed = enemyTypesData.stayEnemy.movementSpeed;
+                    DetectionRange = enemyTypesData.stayEnemy.detectionRange;
+                    return;
             }
         }
 

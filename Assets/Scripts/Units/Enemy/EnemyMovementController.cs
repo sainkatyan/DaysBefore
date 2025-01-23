@@ -13,34 +13,23 @@ namespace Units.Enemy
         private NavMeshAgent agent;
         private Transform[] patrolPoints;
         private Transform target;
-    
+        
         private Dictionary<Type, IEnemyState> behaviorsMap;
         private IEnemyState enemyCurrentState;
         private float distanceToTarget;
 
 
-        public void Init(Enemy enemy)
+        public void Init(float movementSpeed)
         {
             agent = GetComponent<NavMeshAgent>();
+            agent.speed = movementSpeed;
+            
             target = GameManager.Instance.player.transform;
             if (patrolAim != null)
             {
                 patrolPoints = patrolAim.SetPatrolTargets();
             }
-
-            SetMovemetSpeed();
-
             this.InitBehaviours();
-        }
-
-        private void SetMovemetSpeed()
-        {
-            if (agent == null)
-            {
-                agent = GetComponent<NavMeshAgent>();
-            }
-
-            agent.speed = GameManager.Instance.enemyData.patrolEnemy.speed; //have to change
         }
 
         private void InitBehaviours()

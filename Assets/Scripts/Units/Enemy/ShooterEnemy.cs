@@ -8,7 +8,6 @@ namespace Units.Enemy
     {
         private WeaponController weaponController;
         private Transform target;
-        private float chaseRange;
         private bool isShooting = false;
 
         protected override void PerformAction()
@@ -18,7 +17,6 @@ namespace Units.Enemy
             weaponController = GetComponent<WeaponController>();
             isShooting = false;
             target = GameManager.Instance.player.transform;
-            chaseRange = GameManager.Instance.enemyData.stayEnemy.chaseRange;
             
             Subscribe();
         }
@@ -43,7 +41,7 @@ namespace Units.Enemy
         {
             if (!target) return; //check player's dead for deACTIVATE
 
-            if (IsTargetInSight(target, chaseRange) && !isShooting)
+            if (IsTargetInSight(target, DetectionRange) && !isShooting)
             {
                 ActivateShootMode();
             }

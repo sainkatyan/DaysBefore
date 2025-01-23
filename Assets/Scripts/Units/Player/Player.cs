@@ -10,7 +10,7 @@ namespace Units.Player
         public PlayerMovement playerMovement;
         public CameraMovement cameraMovement;
 
-        public Health health;
+        [HideInInspector] public Health health;
 
         private void Awake()
         {
