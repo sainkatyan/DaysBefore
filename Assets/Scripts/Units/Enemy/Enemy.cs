@@ -46,7 +46,7 @@ namespace Units.Enemy
             return IsTargetInView(target, chaseRange);
         }
 
-        private bool IsTargetInZone(Transform target, float chaseRange)
+        protected bool IsTargetInZone(Transform target, float chaseRange)
         {
             float distanceToTarget = Vector3.Distance(transform.position, target.position);
             return (distanceToTarget < chaseRange);

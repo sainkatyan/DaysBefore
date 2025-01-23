@@ -1,21 +1,38 @@
-﻿using Units.Player;
+﻿using Core;
+using Units.Player;
 using UnityEngine;
 
 namespace Units.Enemy
 {
     public class HunterEnemy : Enemy
     {
-        [SerializeField] private EnemyHunterViewZone viewZone;
+        private Transform target;
+        private float chaseRange;
+        private bool isHunting = false;
 
         protected override void PerformAction()
         {
             EnemyMovementController.SetBehaviorIdle();
-            viewZone.Initialize(this);
+            target = GameManager.Instance.player.transform;
+            chaseRange = GameManager.Instance.enemyData.hunterEnemy.chaseRange;
+        }
+        
+        public void FixedUpdate()
+        {
+            if (IsTargetInSight(target, chaseRange) && !isHunting)
+            {
+                isHunting = true;
+                TurnOnHuntingMode();
+            }
+            else if(!IsTargetInZone(target, chaseRange) && isHunting)
+            {
+                isHunting = false;
+                TurnOnHuntingMode(false);
+            }
         }
 
         private void OnCollisionEnter(Collision collision)
         {
-            transform.LookAt(collision.transform.position);
             ITakeDamage damageable = collision.gameObject.GetComponent<ITakeDamage>();
             if (damageable == null) return;
 
@@ -27,11 +44,11 @@ namespace Units.Enemy
             Die();
         }
 
-        public void TurnOnHuntingMode(bool isHuntingMode, GameObject huntTarget = null)
+        private void TurnOnHuntingMode(bool isHuntingMode = true)
         {
             if (isHuntingMode)
             {
-                EnemyMovementController.SetBehaviorHunter(huntTarget);
+                EnemyMovementController.SetBehaviorHunter(target.gameObject);
             }
             else
             {

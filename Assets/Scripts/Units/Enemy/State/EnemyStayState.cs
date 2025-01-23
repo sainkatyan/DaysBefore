@@ -8,6 +8,7 @@ namespace Units.Enemy.State
             : base(agent) { }
         public override void Enter()
         {
+            if (Agent == null) return;
             Agent.isStopped = false;
         }
 

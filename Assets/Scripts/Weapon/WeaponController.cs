@@ -15,6 +15,11 @@ namespace Weapon
             EquipWeapon();
         }
 
+        private void PerformAction()
+        {
+            
+        }
+
         public void Init(UnitBase unitBase)
         {
             parentUnit = unitBase;

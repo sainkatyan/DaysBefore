@@ -7,16 +7,13 @@
     <list default="true" id="573922ae-35da-4478-be37-ddbb3bce4acc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ReactionGames/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ReactionGames/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefubs/Units/Enemies/HunterEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefubs/Units/Enemies/HunterEnemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefubs/Units/Enemies/PatrolEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefubs/Units/Enemies/PatrolEnemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefubs/Units/Enemies/ShootEnemy.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefubs/Units/Enemies/ShootEnemy.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameplayCore.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameplayCore.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Enemy/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Enemy/Enemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Enemy/EnemyHunterViewZone.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Enemy/EnemyHunterViewZone.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Enemy/EnemyMovementController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Enemy/EnemyMovementController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Enemy/HunterEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Enemy/HunterEnemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Enemy/PatrolEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Enemy/PatrolEnemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Enemy/ShooterEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Enemy/ShooterEnemy.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Player/Player.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Weapon/Bullet.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Weapon/Bullet.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Weapon/Weapon.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Weapon/Weapon.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Units/Enemy/State/EnemyStayState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Units/Enemy/State/EnemyStayState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Weapon/WeaponController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Weapon/WeaponController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -106,7 +103,7 @@
       <workItem from="1737562530066" duration="77000" />
       <workItem from="1737563020921" duration="6287000" />
       <workItem from="1737582282471" duration="4245000" />
-      <workItem from="1737645692847" duration="51000" />
+      <workItem from="1737645692847" duration="2877000" />
     </task>
     <servers />
   </component>
