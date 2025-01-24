@@ -9,19 +9,16 @@ namespace Units.Enemy.State
      : base(agent, target) { }
         public override void Enter()
         {
-            Debug.Log("enter Hunter state");
             Agent.isStopped = false;
         }
 
         public override void Exit()
         {
-            Debug.Log("Exit Hunter state");
             Agent.isStopped = true;
         }
 
         public override void Update()
         {
-            Debug.Log("Update Hunter state");
             Agent.SetDestination(Target.position);
         }
     }

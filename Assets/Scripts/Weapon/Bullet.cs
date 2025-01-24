@@ -4,16 +4,17 @@ namespace Weapon
 {
     public class Bullet : MonoBehaviour
     {
-        private float speed = 0.5f;
-
+        private float speed = 0.2f;
         private Vector3 startPos;
         private Vector3 endPos;
         private float lifeTime;
 
-        public void Init(Vector3 startPos, Vector3 endpos)
+        public void Init(Vector3 startPos, Vector3 endPos, float bulletSpeed)
         {
+            speed = bulletSpeed;
+            
             this.startPos = startPos;
-            endPos = endpos;
+            this.endPos = endPos;
             lifeTime = 0f;
         }
 

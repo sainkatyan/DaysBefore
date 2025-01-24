@@ -5,7 +5,6 @@ namespace Units.Player
 {
     public class Health : MonoBehaviour
     {
-        private float maxHealth;
         private float currentHealth;
 
         public event Action OnDeath; 
@@ -13,7 +12,6 @@ namespace Units.Player
 
         public Health(float maxHealth)
         {
-            this.maxHealth = maxHealth;
             currentHealth = maxHealth;
         }
 

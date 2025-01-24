@@ -20,6 +20,8 @@ namespace Units.Player
             this.inputController = inputController;
             this.cameraMovement = cameraMovement;
             movementSpeed = GameManager.Instance.playerData.movementSpeed;
+            
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         private void FixedUpdate()

@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c996a79a12bddc74ebc89c715599ede5, type: 3}
   m_Name: Weapon
   m_EditorClassIdentifier: 
-  timeFireRate: 2
-  attackDamage: 1
+  timeFireRate: 0.1
+  attackDamage: 10
+  bulletSpeed: 0.1

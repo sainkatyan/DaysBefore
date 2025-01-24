@@ -15,7 +15,6 @@ namespace Units.Enemy.State
         {
             Agent = agent;
         }
-
         protected EnemyState(NavMeshAgent agent, Transform target = null)
         {
             Agent = agent;
@@ -27,14 +26,6 @@ namespace Units.Enemy.State
             Agent = agent;
             Target = target;
             WayPoints = wayPoints;
-        }
-
-        protected EnemyState(Enemy enemy, NavMeshAgent agent, Transform target, float chaseRange)
-        {
-            Enemy = enemy;
-            Agent = agent;
-            Target = target;
-            ChaseRange = chaseRange;
         }
 
         public abstract void Enter();

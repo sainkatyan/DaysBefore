@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: StayEnemy
   m_EditorClassIdentifier: 
   isShooting: 1
-  speed: 1
+  movementSpeed: 7
   damage: 10
   chaseRange: 10
+  detectionRange: 10

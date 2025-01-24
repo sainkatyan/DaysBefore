@@ -7,9 +7,12 @@ namespace Data
     {
         [SerializeField] private float timeFireRate;
         [SerializeField] private float attackDamage;
+        [SerializeField] private float bulletSpeed;
 
         public float TimeFireRate => timeFireRate;
 
         public float AttackDamage => attackDamage;
+        
+        public float BulletSpeed => bulletSpeed;
     }
 }

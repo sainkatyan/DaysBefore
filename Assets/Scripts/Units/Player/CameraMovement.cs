@@ -1,5 +1,4 @@
 ﻿using Input;
-using Unity.Collections.LowLevel.Unsafe;
 using UnityEngine;
 
 namespace Units.Player
@@ -12,21 +11,38 @@ namespace Units.Player
         private PlayerMovement playerMovement;
         private Camera playerCamera;
         private readonly Vector3 playerCameraPosition = new Vector3(1, 0, -5);
-        public void Init(InputController inputController, PlayerMovement playerMovement)
+        private Player player;
+        public void Init(Player player, InputController inputController, PlayerMovement playerMovement)
         {
             this.inputController = inputController;
             this.playerMovement = playerMovement;
-
-            ChangeCameraMode();
+            this.player = player;
+            PlayerCameraMode();
+            Subscribe();
         }
 
-        private void ChangeCameraMode(bool isPlayerDead = false)
+        private void Subscribe()
         {
-            Camera mainCamera = Camera.main;
-            if (mainCamera == null) return;
-            mainCamera.transform.SetParent(this.transform);
-            mainCamera.transform.localPosition = playerCameraPosition;
-            Debug.Log("Main Camera successfully attached to Camera Pivot.");
+            player.health.OnDeath += WorldCameraMode;
+        }
+        
+        private void UnSubscribe()
+        {
+            player.health.OnDeath -= WorldCameraMode;
+        }
+
+        private void WorldCameraMode()
+        {
+            if (playerCamera == null) return;
+            playerCamera.transform.SetParent(null);
+        }
+
+        private void PlayerCameraMode()
+        {
+            playerCamera = Camera.main;
+            if (playerCamera == null) return;
+            playerCamera.transform.SetParent(this.transform);
+            playerCamera.transform.localPosition = playerCameraPosition;
         }
 
         private void Update()
@@ -59,6 +75,11 @@ namespace Units.Player
                 }
             }
             return angle;
+        }
+
+        private void OnDestroy()
+        {
+            UnSubscribe();
         }
     }
 }

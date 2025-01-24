@@ -36,9 +36,6 @@ namespace Units.Enemy
 
             damageable.TakeDamage(DamageAmount);
             Debug.Log($"{DamageAmount} damage from enemy");
-
-            TurnOnHuntingMode(false);
-
             Die();
         }
 

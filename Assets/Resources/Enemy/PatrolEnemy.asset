@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: PatrolEnemy
   m_EditorClassIdentifier: 
   isShooting: 0
-  speed: 5
+  movementSpeed: 7
   damage: 10
+  chaseRange: 10
+  detectionRange: 10

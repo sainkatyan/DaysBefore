@@ -15,26 +15,15 @@ namespace Weapon
             EquipWeapon();
         }
 
-        private void PerformAction()
-        {
-            
-        }
-
-        public void Init(UnitBase unitBase)
-        {
-            parentUnit = unitBase;
-        }
-
         private void EquipWeapon()
         {
             if (Weapon != null)
             {
                 Destroy(Weapon.gameObject);
             }
-
+            
             Weapon = Instantiate(GameManager.Instance.weapon, weaponPivot.position, weaponPivot.rotation);
             Weapon.transform.SetParent(weaponPivot);
-            Weapon.SetInfoBaseUnit(parentUnit);
         }
 
         public void StartShoot()

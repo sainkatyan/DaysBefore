@@ -11,35 +11,36 @@ namespace Weapon
         public Transform firePivot;
 
         public LayerMask ignoreLayer;
-        private float lifetTime = 1f;
-        private float weaponSpeed = 2f;
+        private float fireTimer;
 
         private void Start()
         {
             SetSettings(GameManager.Instance.weaponData);
-            lifetTime = 0f;
         }
 
         protected override void SetSettings(WeaponData weaponSettings)
         {
             base.SetSettings(weaponSettings);
+            fireTimer = TimeFireRate;
         }
 
         private void Update()
         {
             if (isShooting == false) return;
-            lifetTime += Time.deltaTime / weaponSpeed;
-            if (lifetTime > 1f)
+            
+            fireTimer -= Time.deltaTime;
+            
+            if (fireTimer <= 0f)
             {
-                lifetTime = 0f;
-                Shoot();
+                Shot();
             }
         }
 
-        private void Shoot()
+        private void Shot()
         {
             Ray ray = new Ray(firePivot.position, firePivot.forward);
             Shoot(ray);
+            fireTimer = TimeFireRate;
         }
 
         private void Shoot(Ray ray)
@@ -61,7 +62,7 @@ namespace Weapon
         private void CreateVisualBullet(Vector3 bulletEndPos)
         {
             Bullet bullet = Instantiate(GameManager.Instance.bulletPrefub, firePivot.position, Quaternion.identity);
-            bullet.Init(firePivot.position, bulletEndPos);
+            bullet.Init(firePivot.position, bulletEndPos, BulletSpeed);
         }
 
         private void CheckIUnit(RaycastHit tempHit)
@@ -69,7 +70,7 @@ namespace Weapon
             ITakeDamage damageable = tempHit.transform.GetComponent<ITakeDamage>();
             if (damageable == null) return;
 
-            damageable.TakeDamage(damage);
+            damageable.TakeDamage(Damage);
         }
 
         public override void StartShoot()

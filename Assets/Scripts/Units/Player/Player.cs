@@ -22,8 +22,7 @@ namespace Units.Player
         private void Start()
         {
             playerMovement.Init(inputController, cameraMovement);
-            cameraMovement.Init(inputController, playerMovement);
-
+            cameraMovement.Init(this, inputController, playerMovement);
             
             SubscribeEvent();
         }
@@ -33,7 +32,6 @@ namespace Units.Player
             health.OnHealthChanged += OnHealthChanged;
             health.OnDeath += Die;
         }
-        // ReSharper disable Unity.PerformanceAnalysis
         public void TakeDamage(float damage)
         {
             health.TakeDamage(damage);
@@ -41,7 +39,7 @@ namespace Units.Player
 
         private void OnHealthChanged(float currentHealth)
         {
-            //Debug.Log($"Player health changed: {currentHealth}");
+            
         }
 
         private void OnDestroy()
